@@ -21,7 +21,7 @@ export const registerUser = async (req, res) => {
       users_uid: uuidv4(),
       email,
       username,
-      password_hash: hashedPassword,
+      password: hashedPassword,
       app_id,
       version_id,
     });
@@ -46,7 +46,7 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials!" });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password_hash);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(400).json({ message: "Invalid credentials!" });
     }

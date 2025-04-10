@@ -1,14 +1,13 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../connectDB/db';
+import sequelize from '../connectDB/db.js';
 
-const User = sequelize.define('User', {
+const userModel = sequelize.define('User', {
   users_uid: {
     type: DataTypes.STRING,
     primaryKey: true,
   },
   username: {
     type: DataTypes.STRING,
-    unique: true,
     allowNull: false,
   },
   email: {
@@ -16,7 +15,7 @@ const User = sequelize.define('User', {
     unique: true,
     allowNull: false,
   },
-  password_hash: {
+  password: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
@@ -26,7 +25,7 @@ const User = sequelize.define('User', {
   version_id: {
     type: DataTypes.STRING,
   },
-  user_account_creation_date: {
+  created_At: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
@@ -35,4 +34,4 @@ const User = sequelize.define('User', {
   timestamps: false
 });
 
-export default User;
+export default userModel;

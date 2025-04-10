@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import sequelize from './connectDB/db.js';
 import userRouter from './routes/userRoutes.js';
-
+import UserModel from './model/userModel.js'
 dotenv.config();
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // Use the authentication routes
-app.use('/api/auth', userRouter); 
+app.use('/api/user', userRouter); 
 
 // DB connection and sync
 (async () => {
